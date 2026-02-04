@@ -1,0 +1,12 @@
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.AssemblyInfoInputs.cache
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.AssemblyInfo.cs
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.csproj.CoreCompileInputs.cache
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.csproj.AssemblyReference.cache
+C:\Users\1\VS Code\Lab2\bin\Debug\net8.0\InventorySystem.deps.json
+C:\Users\1\VS Code\Lab2\bin\Debug\net8.0\InventorySystem.dll
+C:\Users\1\VS Code\Lab2\bin\Debug\net8.0\InventorySystem.pdb
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.dll
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\refint\InventorySystem.dll
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\InventorySystem.pdb
+C:\Users\1\VS Code\Lab2\obj\Debug\net8.0\ref\InventorySystem.dll
