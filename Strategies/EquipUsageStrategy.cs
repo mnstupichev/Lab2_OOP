@@ -2,10 +2,6 @@ using InventorySystem.Core.Interfaces;
 
 namespace InventorySystem.Strategies;
 
-/// <summary>
-/// Стратегия использования: экипировка предмета (оружие, броня, аксессуары).
-/// Используется для предметов, которые экипируются на персонажа.
-/// </summary>
 public class EquipUsageStrategy : IItemUsageStrategy
 {
     public string StrategyName => "Equip";
@@ -15,7 +11,6 @@ public class EquipUsageStrategy : IItemUsageStrategy
         if (item is not IEquippable equippable)
             return false;
 
-        // Проверяем состояние предмета
         if (item.State?.CanEquip == false)
             return false;
 
@@ -29,16 +24,6 @@ public class EquipUsageStrategy : IItemUsageStrategy
             return new UseResult
             {
                 Success = false,
-                Message = $"{item.Name} cannot be equipped"
-            };
-        }
-
-        if (!equippable.CanEquip())
-        {
-            return new UseResult
-            {
-                Success = false,
-                Message = $"{item.Name} cannot be equipped due to its state"
             };
         }
 
@@ -46,7 +31,6 @@ public class EquipUsageStrategy : IItemUsageStrategy
         return new UseResult
         {
             Success = true,
-            Message = $"{item.Name} has been equipped",
             Effects = new Dictionary<string, object>
             {
                 { "Equipped", true },

@@ -4,10 +4,6 @@ using InventorySystem.Core.States;
 
 namespace InventorySystem.Builders;
 
-/// <summary>
-/// Конкретная реализация Builder для создания оружия.
-/// Принцип Single Responsibility: отвечает только за построение оружия.
-/// </summary>
 public class WeaponBuilder : IWeaponBuilder
 {
     private static int _weaponCounter = 0;
@@ -17,7 +13,7 @@ public class WeaponBuilder : IWeaponBuilder
     private string _description = "A weapon";
     private int _damage = 10;
     private DamageType _damageType = DamageType.Physical;
-    private double _weight = 2.0;
+    private int _quantity = 1;
     private int _durability = 100;
     private IItemState? _state;
 
@@ -45,9 +41,9 @@ public class WeaponBuilder : IWeaponBuilder
         return this;
     }
 
-    public IWeaponBuilder WithWeight(double weight)
+    public IWeaponBuilder WithQuantity(int quantity)
     {
-        _weight = Math.Max(0, weight);
+        _quantity = Math.Max(1, quantity);
         return this;
     }
 
@@ -65,7 +61,6 @@ public class WeaponBuilder : IWeaponBuilder
 
     public Weapon Build()
     {
-        // Генерируем ID, если не был установлен
         if (string.IsNullOrEmpty(_id))
         {
             _id = $"WEAPON_{++_weaponCounter}";
@@ -75,13 +70,12 @@ public class WeaponBuilder : IWeaponBuilder
             id: _id,
             name: _name,
             description: _description,
-            weight: _weight,
+            quantity: _quantity,
             baseDamage: _damage,
             damageType: _damageType,
             durability: _durability
         );
 
-        // Устанавливаем состояние (по умолчанию Normal, если не указано)
         weapon.State = _state ?? new NormalItemState();
 
         return weapon;

@@ -2,10 +2,6 @@ using InventorySystem.Core.Interfaces;
 
 namespace InventorySystem.Core.Items;
 
-/// <summary>
-/// Класс оружия.
-/// Реализует IEquippable для возможности экипировки.
-/// </summary>
 public class Weapon : BaseItem, IEquippable
 {
     public int BaseDamage { get; private set; }
@@ -18,21 +14,17 @@ public class Weapon : BaseItem, IEquippable
         string id, 
         string name, 
         string description, 
-        int quantity, // Changed from weight to quantity
+        int quantity, 
         int baseDamage,
         DamageType damageType,
         int durability = 100) 
-        : base(id, name, description, quantity) // Changed from weight to quantity
+        : base(id, name, description, quantity) 
     {
         BaseDamage = baseDamage;
         DamageType = damageType;
         Durability = durability;
         IsEquipped = false;
     }
-
-    /// <summary>
-    /// Получить текущий урон с учетом состояния предмета
-    /// </summary>
     public int GetCurrentDamage()
     {
         var modifier = State?.StatModifier ?? 1.0;
@@ -55,14 +47,11 @@ public class Weapon : BaseItem, IEquippable
     }
 }
 
-/// <summary>
-/// Тип урона оружия
-/// </summary>
 public enum DamageType
 {
-    Physical,   // Физический
-    Fire,       // Огненный
-    Ice,        // Ледяной
-    Lightning,  // Молния
-    Poison      // Яд
+    Physical,   
+    Fire,     
+    Ice,        
+    Lightning,  
+    Poison    
 }
