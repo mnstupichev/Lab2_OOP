@@ -2,10 +2,6 @@ using InventorySystem.Core.Interfaces;
 
 namespace InventorySystem.Core.Items;
 
-/// <summary>
-/// Класс брони.
-/// Реализует IEquippable для возможности экипировки.
-/// </summary>
 public class Armor : BaseItem, IEquippable
 {
     public int BaseDefense { get; private set; }
@@ -14,26 +10,15 @@ public class Armor : BaseItem, IEquippable
     public bool IsEquipped { get; set; }
 
     public Armor(
-        string id,
         string name,
-        string description,
         int quantity,
         int baseDefense,
         int durability = 100)
-        : base(id, name, description, quantity)
+        : base(name, quantity)
     {
         BaseDefense = baseDefense;
         Durability = durability;
         IsEquipped = false;
-    }
-
-    /// <summary>
-    /// Получить текущую защиту с учетом состояния предмета
-    /// </summary>
-    public int GetCurrentDefense()
-    {
-        var modifier = State?.StatModifier ?? 1.0;
-        return (int)(BaseDefense * modifier);
     }
 
     public void Equip()

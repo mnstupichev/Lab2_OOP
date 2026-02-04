@@ -3,9 +3,6 @@ using InventorySystem.Core.Items;
 
 namespace InventorySystem.Factories;
 
-/// <summary>
-/// Фабрика для создания еды.
-/// </summary>
 public class FoodFactory : IItemFactory
 {
     private static int _foodCounter = 0;
@@ -30,8 +27,8 @@ public class FoodFactory : IItemFactory
 
     private (int healthRestoration, int quantity) GetFoodStats(string name)
     {
-        var healthRestoration = 50; // Стандартное восстановление здоровья
-        var quantity = 1; // Стандартное количество
+        var healthRestoration = 50;
+        var quantity = 1;
 
         return (healthRestoration, quantity);
     }

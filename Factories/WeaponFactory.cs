@@ -3,11 +3,6 @@ using InventorySystem.Core.Items;
 
 namespace InventorySystem.Factories;
 
-/// <summary>
-/// Фабрика для создания оружия.
-/// Принцип Single Responsibility: отвечает только за создание оружия.
-/// Принцип Dependency Inversion: клиент зависит от IItemFactory, а не от WeaponFactory.
-/// </summary>
 public class WeaponFactory : IItemFactory
 {
     private static int _weaponCounter = 0;
@@ -27,7 +22,6 @@ public class WeaponFactory : IItemFactory
             durability: durability
         );
 
-        // Устанавливаем начальное состояние
         weapon.State = new Core.States.NormalItemState();
         
         return weapon;
@@ -35,8 +29,7 @@ public class WeaponFactory : IItemFactory
 
     private (int damage, DamageType type, int quantity, int durability) GetWeaponStats(string name)
     {
-        // Базовая логика определения характеристик
-        var baseDamage = 25; // Средний урон по умолчанию
+        var baseDamage = 25;
 
         var damageType = name.ToLower().Contains("fire") ? DamageType.Fire :
                         name.ToLower().Contains("ice") ? DamageType.Ice :
@@ -44,9 +37,9 @@ public class WeaponFactory : IItemFactory
                         name.ToLower().Contains("poison") ? DamageType.Poison :
                         DamageType.Physical;
 
-        var quantity = 1; // Средний вес по умолчанию
+        var quantity = 1;
 
-        var durability = 100; // Стандартная прочность
+        var durability = 100;
 
         return (baseDamage, damageType, quantity, durability);
     }

@@ -3,10 +3,6 @@ using InventorySystem.Core.States;
 
 namespace InventorySystem.Services;
 
-/// <summary>
-/// Сервис для улучшения предметов.
-/// Принцип Single Responsibility: отвечает только за логику улучшения предметов.
-/// </summary>
 public class ItemUpgradeService
 {
     private readonly Inventory _inventory;
@@ -18,9 +14,6 @@ public class ItemUpgradeService
         _upgradeModifier = upgradeModifier;
     }
 
-    /// <summary>
-    /// Улучшить предмет по ID
-    /// </summary>
     public UpgradeResult UpgradeItem(string itemId)
     {
         var item = _inventory.FindItemById(itemId);
@@ -35,9 +28,6 @@ public class ItemUpgradeService
         return UpgradeItem(item);
     }
 
-    /// <summary>
-    /// Улучшить предмет напрямую
-    /// </summary>
     public UpgradeResult UpgradeItem(IItem item)
     {
         if (item == null)
@@ -48,7 +38,6 @@ public class ItemUpgradeService
             };
         }
 
-        // Проверяем, можно ли улучшить предмет
         if (item.State is UpgradedItemState)
         {
             return new UpgradeResult
@@ -65,7 +54,6 @@ public class ItemUpgradeService
             };
         }
 
-        // Создаем улучшенное состояние
         var upgradedState = new UpgradedItemState(_upgradeModifier);
         item.State = upgradedState;
 
@@ -82,9 +70,6 @@ public class ItemUpgradeService
     }
 }
 
-/// <summary>
-/// Результат улучшения предмета
-/// </summary>
 public class UpgradeResult
 {
     public bool Success { get; set; }

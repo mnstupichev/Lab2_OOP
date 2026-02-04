@@ -3,10 +3,6 @@ using InventorySystem.Core.Items;
 
 namespace InventorySystem.Strategies;
 
-/// <summary>
-/// Стратегия использования: потребление предмета (еда, зелье).
-/// Используется для предметов, которые потребляются и дают эффект.
-/// </summary>
 public class ConsumeUsageStrategy : IItemUsageStrategy
 {
     public string StrategyName => "Consume";

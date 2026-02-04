@@ -3,9 +3,6 @@ using InventorySystem.Core.Items;
 
 namespace InventorySystem.Factories;
 
-/// <summary>
-/// Фабрика для создания зелий.
-/// </summary>
 public class PotionFactory : IItemFactory
 {
     private static int _potionCounter = 0;
@@ -37,8 +34,8 @@ public class PotionFactory : IItemFactory
                     name.ToLower().Contains("speed") ? PotionEffect.Speed :
                     PotionEffect.Health;
 
-        var potency = 100; // Стандартная сила зелья
-        var quantity = 1; // Стандартное количество зарядов
+        var potency = 100;
+        var quantity = 1;
 
         return (effect, potency, quantity);
     }

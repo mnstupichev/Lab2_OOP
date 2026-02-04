@@ -2,10 +2,6 @@ using InventorySystem.Core.Interfaces;
 
 namespace InventorySystem.Core.Items;
 
-/// <summary>
-/// Класс еды.
-/// Реализует IUsable для возможности использования.
-/// </summary>
 public class Food : BaseItem, IUsable
 {
     public int HealthRestoration { get; private set; }
@@ -13,12 +9,10 @@ public class Food : BaseItem, IUsable
     public bool IsConsumed { get; private set; }
 
     public Food(
-        string id,
         string name,
-        string description,
         int quantity,
         int healthRestoration)
-        : base(id, name, description, quantity)
+        : base(name, quantity)
     {
         HealthRestoration = healthRestoration;
         IsConsumed = false;
@@ -37,8 +31,7 @@ public class Food : BaseItem, IUsable
         }
 
         IsConsumed = true;
-        var modifier = State?.StatModifier ?? 1.0;
-        var effectiveHealth = (int)(HealthRestoration * modifier);
+        var effectiveHealth = (int)(HealthRestoration);
 
         return new UseResult
         {

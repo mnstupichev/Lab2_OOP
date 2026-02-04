@@ -2,10 +2,6 @@ using InventorySystem.Core.Interfaces;
 
 namespace InventorySystem.Core.Items;
 
-/// <summary>
-/// Класс зелья.
-/// Реализует IUsable для возможности использования.
-/// </summary>
 public class Potion : BaseItem, IUsable
 {
     public PotionEffect Effect { get; private set; }
@@ -13,13 +9,11 @@ public class Potion : BaseItem, IUsable
     public int Quatity { get; private set; }
 
     public Potion(
-        string id,
         string name,
-        string description,
         int quantity,
         PotionEffect effect,
         int potency)
-        : base(id, name, description, quantity)
+        : base(name, quantity)
     {
         Effect = effect;
         Potency = potency;
@@ -39,13 +33,11 @@ public class Potion : BaseItem, IUsable
         }
 
         Quatity--;
-        var modifier = State?.StatModifier ?? 1.0;
-        var effectivePotency = (int)(Potency * modifier);
+        var effectivePotency = (int)(Potency);
 
         return new UseResult
         {
             Success = true,
-            Message = $"Used {Name}. Effect: {Effect} ({effectivePotency})",
             Effects = new Dictionary<string, object>
             {
                 { "Effect", Effect.ToString() },
@@ -55,14 +47,11 @@ public class Potion : BaseItem, IUsable
     }
 }
 
-/// <summary>
-/// Эффект зелья
-/// </summary>
 public enum PotionEffect
 {
-    Health,     // Восстановление здоровья
-    FireProtection,       // Защита от огня
-    Strength,  // Увеличение силы
-    Speed,      // Увеличение скорости
-    Invisibility // Невидимость
+    Health,
+    FireProtection,
+    Strength,
+    Speed,
+    Invisibility
 }
