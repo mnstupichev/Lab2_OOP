@@ -1,4 +1,4 @@
-namespace InventorySystem.Services.EquipmentServise;
+namespace Lab2_OOP.Services.EquipmentServise;
 
 public interface IEquippable
 {

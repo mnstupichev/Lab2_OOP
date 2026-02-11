@@ -1,4 +1,4 @@
-namespace InventorySystem.InventoryFolder.Results;
+namespace Lab2_OOP.InventoryFolder.Results;
 
 public abstract class AddItemResult
 {

@@ -1,8 +1,7 @@
-using InventorySystem.Enchantments;
-using InventorySystem.Items.Weapon;
-using Xunit;
+using Lab2_OOP.Enchantments;
+using Lab2_OOP.Items.Weapon;
 
-namespace InventorySystem.Tests;
+namespace Lab2_OOP.Tests;
 
 public class WeaponEnchantmentsTests
 {

@@ -1,9 +1,8 @@
-using Xunit;
-using InventorySystem.Items.Armor;
-using InventorySystem.Items.Weapon;
-using InventorySystem.Services.EquipmentServise;
+using Lab2_OOP.Items.Armor;
+using Lab2_OOP.Items.Weapon;
+using Lab2_OOP.Services.EquipmentServise;
 
-namespace InventorySystem.Tests;
+namespace Lab2_OOP.Tests;
 
 public class EquippableItemsTests
 {

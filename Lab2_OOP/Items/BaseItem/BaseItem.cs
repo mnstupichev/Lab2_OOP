@@ -1,4 +1,4 @@
-namespace InventorySystem.Items.BaseItem;
+namespace Lab2_OOP.Items.BaseItem;
 
 public abstract class BaseItem : IItem
 {

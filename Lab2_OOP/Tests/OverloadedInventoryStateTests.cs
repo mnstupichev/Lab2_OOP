@@ -1,10 +1,9 @@
-using InventorySystem.InventoryFolder;
-using InventorySystem.InventoryFolder.InventoryStates;
-using InventorySystem.InventoryFolder.Results;
-using InventorySystem.Items.Weapon;
-using Xunit;
+using Lab2_OOP.InventoryFolder;
+using Lab2_OOP.InventoryFolder.InventoryStates;
+using Lab2_OOP.InventoryFolder.Results;
+using Lab2_OOP.Items.Weapon;
 
-namespace InventorySystem.Tests;
+namespace Lab2_OOP.Tests;
 
 public class OverloadedInventoryStateTests
 {

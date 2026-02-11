@@ -1,6 +1,6 @@
-using InventorySystem.Services.EquipmentServise;
+using Lab2_OOP.Services.EquipmentServise;
 
-namespace InventorySystem.Items.Armor;
+namespace Lab2_OOP.Items.Armor;
 
 public class Armor : BaseItem.BaseItem, IEquippable
 {

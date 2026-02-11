@@ -1,7 +1,7 @@
-using InventorySystem.Enchantments;
-using InventorySystem.Services.EquipmentServise;
+using Lab2_OOP.Enchantments;
+using Lab2_OOP.Services.EquipmentServise;
 
-namespace InventorySystem.Items.Weapon;
+namespace Lab2_OOP.Items.Weapon;
 
 public class Weapon : BaseItem.BaseItem, IEquippable
 {

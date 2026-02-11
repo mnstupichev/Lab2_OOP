@@ -1,7 +1,7 @@
-using InventorySystem.InventoryFolder.Results;
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.InventoryFolder.Results;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.InventoryFolder.InventoryStates;
+namespace Lab2_OOP.InventoryFolder.InventoryStates;
 
 public class OverloadedInventoryState : IInventoryState
 {

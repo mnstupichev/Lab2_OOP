@@ -1,4 +1,4 @@
-namespace InventorySystem.Items.Poison;
+namespace Lab2_OOP.Items.Poison;
 
 public class PotionBuilder : IPotionBuilder
 {

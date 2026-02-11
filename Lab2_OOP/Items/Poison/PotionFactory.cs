@@ -1,6 +1,6 @@
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.Items.Poison;
+namespace Lab2_OOP.Items.Poison;
 
 public class PotionFactory : IItemFactory
 {

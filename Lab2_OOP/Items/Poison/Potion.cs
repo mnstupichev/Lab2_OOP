@@ -1,6 +1,6 @@
-using InventorySystem.Services.UseServise;
+using Lab2_OOP.Services.UseServise;
 
-namespace InventorySystem.Items.Poison;
+namespace Lab2_OOP.Items.Poison;
 
 public class Potion : BaseItem.BaseItem, IUsable
 {

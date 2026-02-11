@@ -1,7 +1,7 @@
-using InventorySystem.InventoryFolder;
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.InventoryFolder;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.Services.EquipmentServise;
+namespace Lab2_OOP.Services.EquipmentServise;
 
 public class EquipmentService
 {

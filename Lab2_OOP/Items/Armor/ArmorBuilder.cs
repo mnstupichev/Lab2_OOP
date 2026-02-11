@@ -1,4 +1,4 @@
-namespace InventorySystem.Items.Armor;
+namespace Lab2_OOP.Items.Armor;
 
 public class ArmorBuilder : IArmorBuilder
 {

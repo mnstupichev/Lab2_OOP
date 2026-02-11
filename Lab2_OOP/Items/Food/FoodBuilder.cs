@@ -1,4 +1,4 @@
-namespace InventorySystem.Items.Food;
+namespace Lab2_OOP.Items.Food;
 
 public class FoodBuilder : IFoodBuilder
 {

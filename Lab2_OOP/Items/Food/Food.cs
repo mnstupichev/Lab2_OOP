@@ -1,6 +1,6 @@
-using InventorySystem.Services.UseServise;
+using Lab2_OOP.Services.UseServise;
 
-namespace InventorySystem.Items.Food;
+namespace Lab2_OOP.Items.Food;
 
 public class Food : BaseItem.BaseItem, IUsable
 {

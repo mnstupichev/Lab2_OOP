@@ -1,6 +1,6 @@
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.Items.Armor;
+namespace Lab2_OOP.Items.Armor;
 
 public class ArmorFactory : IItemFactory
 {

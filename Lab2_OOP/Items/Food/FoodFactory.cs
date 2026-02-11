@@ -1,6 +1,6 @@
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.Items.Food;
+namespace Lab2_OOP.Items.Food;
 
 public class FoodFactory : IItemFactory
 {

@@ -1,6 +1,6 @@
-using InventorySystem.Items.Weapon;
+using Lab2_OOP.Items.Weapon;
 
-namespace InventorySystem.Enchantments;
+namespace Lab2_OOP.Enchantments;
 
 public class FireEnchantment : IEnchantment
 {

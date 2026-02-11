@@ -1,7 +1,7 @@
-using InventorySystem.InventoryFolder.Results;
-using InventorySystem.Items.BaseItem;
+using Lab2_OOP.InventoryFolder.Results;
+using Lab2_OOP.Items.BaseItem;
 
-namespace InventorySystem.InventoryFolder;
+namespace Lab2_OOP.InventoryFolder;
 
 public interface IInventory
 {

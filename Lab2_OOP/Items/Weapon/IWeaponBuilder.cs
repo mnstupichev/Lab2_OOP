@@ -1,4 +1,4 @@
-namespace InventorySystem.Items.Weapon;
+namespace Lab2_OOP.Items.Weapon;
 
 public interface IWeaponBuilder
 {
