@@ -1,17 +1,16 @@
-using InventorySystem.Interfaces;
+using InventorySystem.Enchantments;
+using InventorySystem.Services.EquipmentServise;
 
-namespace InventorySystem.Items;
+namespace InventorySystem.Items.Weapon;
 
-public class Weapon : BaseItem, IEquippable
+public class Weapon : BaseItem.BaseItem, IEquippable
 {
-    private readonly List<string> _enchantments;
-    
     public int BaseDamage { get; private set; }
     public DamageType DamageType { get; private set; }
     public int Durability { get; private set; }
     public EquipmentSlot Slot => EquipmentSlot.Weapon;
-    public bool IsEquipped { get; set; }
-    public IReadOnlyList<string> Enchantments => _enchantments.AsReadOnly();
+    public bool IsEquipped { get; private set; }
+    
 
     public Weapon(
         string name,
@@ -25,29 +24,11 @@ public class Weapon : BaseItem, IEquippable
         DamageType = damageType;
         Durability = durability;
         IsEquipped = false;
-        _enchantments = new List<string>();
     }
-    public void AddEnchantment(string enchantmentName)
+    
+    public void AddEnchantment(IEnchantment enchantment)
     {
-        if (!string.IsNullOrWhiteSpace(enchantmentName))
-        {
-            _enchantments.Add(enchantmentName);
-        }
-    }
-
-    public void RemoveEnchantment(string enchantmentName)
-    {
-        _enchantments.Remove(enchantmentName);
-    }
-
-    public void ClearEnchantments()
-    {
-        _enchantments.Clear();
-    }
-
-    public bool HasEnchantment(string enchantmentName)
-    {
-        return _enchantments.Contains(enchantmentName);
+        DamageType = enchantment.ChangeDamageType();
     }
     
     public void Equip()

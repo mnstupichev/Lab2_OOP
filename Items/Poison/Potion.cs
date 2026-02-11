@@ -1,8 +1,8 @@
-using InventorySystem.Interfaces;
+using InventorySystem.Services.UseServise;
 
-namespace InventorySystem.Items;
+namespace InventorySystem.Items.Poison;
 
-public class Potion : BaseItem, IUsable
+public class Potion : BaseItem.BaseItem, IUsable
 {
     public PotionEffect Effect { get; private set; }
     public int Potency { get; private set; }
@@ -17,24 +17,15 @@ public class Potion : BaseItem, IUsable
         Effect = effect;
         Potency = potency;
     }
-
-    public bool CanUse => Quantity > 0;
-
+    
     public UseResult Use()
     {
-        if (!CanUse)
+        if (Quantity == 0)
         {
-            return new UseResult 
-            {
-                Success = false,
-            };
+            return new UseResult.Failure();
         }
 
         Quantity--;
-
-        return new UseResult
-        {
-            Success = true,
-        };
+        return new UseResult.Success();
     }
 }

@@ -1,6 +1,4 @@
-using InventorySystem.Items;
-
-namespace InventorySystem.Builders;
+namespace InventorySystem.Items.Poison;
 
 public class PotionBuilder : IPotionBuilder
 {

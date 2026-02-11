@@ -1,6 +1,4 @@
-using InventorySystem.Interfaces;
-
-namespace InventorySystem.Factories;
+namespace InventorySystem.Items.BaseItem;
 
 public interface IItemFactory
 {

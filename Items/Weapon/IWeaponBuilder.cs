@@ -1,7 +1,4 @@
-using InventorySystem.Interfaces;
-using InventorySystem.Items;
-
-namespace InventorySystem.Builders;
+namespace InventorySystem.Items.Weapon;
 
 public interface IWeaponBuilder
 {

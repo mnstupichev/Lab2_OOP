@@ -1,7 +1,10 @@
+using InventorySystem.InventoryFolder;
 using Xunit;
-using InventorySystem.Services;
-using InventorySystem.Builders;
-using InventorySystem.Items;
+using InventorySystem.Items.Armor;
+using InventorySystem.Items.Food;
+using InventorySystem.Items.Poison;
+using InventorySystem.Items.Weapon;
+using InventorySystem.Services.EquipmentServise;
 
 namespace InventorySystem.Tests;
 

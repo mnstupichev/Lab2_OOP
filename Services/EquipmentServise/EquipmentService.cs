@@ -1,6 +1,7 @@
-using InventorySystem.Interfaces;
+using InventorySystem.InventoryFolder;
+using InventorySystem.Items.BaseItem;
 
-namespace InventorySystem.Services;
+namespace InventorySystem.Services.EquipmentServise;
 
 public class EquipmentService
 {

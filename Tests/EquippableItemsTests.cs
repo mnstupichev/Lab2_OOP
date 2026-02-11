@@ -1,6 +1,7 @@
 using Xunit;
-using InventorySystem.Builders;
-using InventorySystem.Items;
+using InventorySystem.Items.Armor;
+using InventorySystem.Items.Weapon;
+using InventorySystem.Services.EquipmentServise;
 
 namespace InventorySystem.Tests;
 
@@ -24,8 +25,8 @@ public class EquippableItemsTests
         var weapon = new WeaponBuilder()
             .WithName("Sword")
             .Build();
+        
         weapon.Equip();
-
         weapon.Unequip();
 
         Assert.False(weapon.IsEquipped);

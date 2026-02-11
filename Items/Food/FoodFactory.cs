@@ -1,7 +1,6 @@
-using InventorySystem.Builders;
-using InventorySystem.Interfaces;
+using InventorySystem.Items.BaseItem;
 
-namespace InventorySystem.Factories;
+namespace InventorySystem.Items.Food;
 
 public class FoodFactory : IItemFactory
 {

@@ -1,6 +1,7 @@
 using Xunit;
-using InventorySystem.Builders;
-using InventorySystem.Items;
+using InventorySystem.Items.Food;
+using InventorySystem.Items.Poison;
+using InventorySystem.Services.UseServise;
 
 namespace InventorySystem.Tests;
 
@@ -13,107 +14,87 @@ public class UsableItemsTests
             .WithName("Apple")
             .WithQuantity(5)
             .Build();
-
-        var result = food.Use();
-
-        Assert.True(result.Success);
+        
+        food.Use();
+        
         Assert.Equal(4, food.Quantity);
+    }
+    
+    [Fact]
+    public void Food_Use_ReturnsSuccess()
+    {
+        var food = new FoodBuilder()
+            .WithName("Apple")
+            .WithQuantity(5)
+            .Build();
+
+        UseResult result = food.Use();
+
+        Assert.IsType<UseResult.Success>(result);
     }
 
     [Fact]
     public void Food_Use_MarksAsConsumed()
     {
         var food = new FoodBuilder()
-            .WithQuantity(1)
-            .Build();
-
-        food.Use();
-
-        Assert.False(food.CanUse);
-    }
-
-    [Fact]
-    public void Food_Use_AlreadyConsumed_ReturnsFalse()
-    {
-        var food = new FoodBuilder()
-            .WithQuantity(1)
-            .Build();
-        food.Use();
-
-        var result = food.Use();
-
-        Assert.False(result.Success);
-    }
-
-    [Fact]
-    public void Food_CanUse_InitiallyTrue()
-    {
-        var food = new FoodBuilder().Build();
-
-        Assert.True(food.CanUse);
-    }
-
-    [Fact]
-    public void Potion_Use_DecreasesQuantity()
-    {
-        var potion = new PotionBuilder()
-            .WithName("Health Potion")
-            .WithQuantity(3)
-            .Build();
-
-        var result = potion.Use();
-
-        Assert.True(result.Success);
-        Assert.Equal(2, potion.Quantity);
-    }
-
-    [Fact]
-    public void Potion_Use_ZeroQuantity_ReturnsFalse()
-    {
-        var potion = new PotionBuilder()
-            .WithQuantity(1)
-            .Build();
-        potion.Use();
-
-        var result = potion.Use();
-
-        Assert.False(result.Success);
-    }
-
-    [Fact]
-    public void Potion_CanUse_TrueWhenQuantityAboveZero()
-    {
-        var potion = new PotionBuilder()
+            .WithName("Apple")
             .WithQuantity(5)
             .Build();
 
-        Assert.True(potion.CanUse);
+        food.Use();
+
+        Assert.True(food.IsConsumed);
+    }
+    
+    [Fact]
+    public void Food_Use_WithoutEnoughQuantity_ReturnsFailure()
+    {
+        var food = new FoodBuilder()
+            .WithName("Apple")
+            .WithQuantity(0)
+            .Build();
+
+        UseResult result = food.Use();
+
+        Assert.IsType<UseResult.Failure>(result);
     }
 
     [Fact]
-    public void Potion_CanUse_FalseWhenQuantityZero()
+    public void Poison_Use_DecreasesQuantity()
     {
-        var potion = new PotionBuilder()
-            .WithQuantity(1)
+        var poison = new PotionBuilder()
+            .WithName("Poison")
+            .WithQuantity(5)
             .Build();
-        potion.Use();
-
-        Assert.False(potion.CanUse);
+        
+        poison.Use();
+        
+        Assert.Equal(4, poison.Quantity);
     }
-
+    
     [Fact]
-    public void Potion_MultipleUses_WorksCorrectly()
+    public void Poison_Use_ReturnsSuccess()
     {
-        var potion = new PotionBuilder()
-            .WithQuantity(3)
+        var poison = new PotionBuilder()
+            .WithName("Poison")
+            .WithQuantity(5)
             .Build();
+        
+        UseResult result = poison.Use();
 
-        potion.Use();
-        potion.Use();
-        var result = potion.Use();
+        Assert.IsType<UseResult.Success>(result);
+    }
+    
+    [Fact]
+    public void Poison_Use_WithoutEnoughQuantity_ReturnsFailure()
+    {
+        var poison = new PotionBuilder()
+            .WithName("Poison")
+            .WithQuantity(0)
+            .Build();
+        
+        UseResult result = poison.Use();
 
-        Assert.True(result.Success);
-        Assert.Equal(0, potion.Quantity);
-        Assert.False(potion.CanUse);
+        Assert.IsType<UseResult.Failure>(result);
     }
 }

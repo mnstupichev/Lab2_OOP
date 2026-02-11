@@ -1,6 +1,8 @@
 using Xunit;
-using InventorySystem.Builders;
-using InventorySystem.Items;
+using InventorySystem.Items.Armor;
+using InventorySystem.Items.Food;
+using InventorySystem.Items.Poison;
+using InventorySystem.Items.Weapon;
 
 namespace InventorySystem.Tests;
 
@@ -16,9 +18,12 @@ public class BuilderFluentInterfaceTests
             .WithQuantity(1)
             .WithDurability(100)
             .Build();
-
-        Assert.NotNull(weapon);
+        
         Assert.Equal("Sword", weapon.Name);
+        Assert.Equal(25, weapon.BaseDamage);
+        Assert.Equal(DamageType.Physical, weapon.DamageType);
+        Assert.Equal(1, weapon.Quantity);
+        Assert.Equal(100, weapon.Durability);
     }
 
     [Fact]
@@ -28,11 +33,13 @@ public class BuilderFluentInterfaceTests
             .WithName("Shield")
             .WithDefense(15)
             .WithQuantity(1)
-            .WithDurability(120)
+            .WithDurability(100)
             .Build();
 
-        Assert.NotNull(armor);
         Assert.Equal("Shield", armor.Name);
+        Assert.Equal(15, armor.BaseDefense);
+        Assert.Equal(1, armor.Quantity);
+        Assert.Equal(100, armor.Durability);
     }
 
     [Fact]
@@ -45,8 +52,10 @@ public class BuilderFluentInterfaceTests
             .WithQuantity(3)
             .Build();
 
-        Assert.NotNull(potion);
         Assert.Equal("Mana Potion", potion.Name);
+        Assert.Equal(PotionEffect.Speed, potion.Effect);
+        Assert.Equal(60, potion.Potency);
+        Assert.Equal(3, potion.Quantity);
     }
 
     [Fact]
@@ -58,7 +67,8 @@ public class BuilderFluentInterfaceTests
             .WithQuantity(5)
             .Build();
 
-        Assert.NotNull(food);
         Assert.Equal("Bread", food.Name);
+        Assert.Equal(20, food.HealthRestoration);
+        Assert.Equal(5, food.Quantity);
     }
 }

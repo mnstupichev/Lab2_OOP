@@ -1,3 +1,5 @@
+namespace InventorySystem.Items.Weapon;
+
 public enum DamageType
 {
     Fire,

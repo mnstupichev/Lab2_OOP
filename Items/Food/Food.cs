@@ -1,8 +1,8 @@
-using InventorySystem.Interfaces;
+using InventorySystem.Services.UseServise;
 
-namespace InventorySystem.Items;
+namespace InventorySystem.Items.Food;
 
-public class Food : BaseItem, IUsable
+public class Food : BaseItem.BaseItem, IUsable
 {
     public int HealthRestoration { get; private set; }
     public bool IsConsumed { get; private set; }
@@ -16,25 +16,16 @@ public class Food : BaseItem, IUsable
         HealthRestoration = healthRestoration;
         IsConsumed = false;
     }
-
-    public bool CanUse => !IsConsumed;
-
+    
     public UseResult Use()
     {
-        if (!CanUse)
+        if (Quantity == 0)
         {
-            return new UseResult
-            {
-                Success = false,
-            };
+            return new UseResult.Failure();
         }
 
         IsConsumed = true;
         Quantity--;
-
-        return new UseResult
-        {
-            Success = true,
-        };
+        return new UseResult.Success();
     }
 }

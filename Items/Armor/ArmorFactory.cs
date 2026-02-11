@@ -1,7 +1,6 @@
-using InventorySystem.Interfaces;
-using InventorySystem.Items;
+using InventorySystem.Items.BaseItem;
 
-namespace InventorySystem.Factories;
+namespace InventorySystem.Items.Armor;
 
 public class ArmorFactory : IItemFactory
 {

@@ -1,4 +1,10 @@
-public class UseResult
+namespace InventorySystem.Services.UseServise;
+
+public abstract class UseResult
 {
-    public bool Success { get; set; }
+    private UseResult() { }
+
+    public sealed class Success : UseResult;
+    
+    public sealed class Failure : UseResult;
 }

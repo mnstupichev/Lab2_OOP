@@ -1,7 +1,7 @@
-namespace InventorySystem.Interfaces;
+namespace InventorySystem.Items.BaseItem;
 
 public interface IItem
 {
     string Name { get; }
-    int Quantity { get; set; }
+    int Quantity { get; }
 }

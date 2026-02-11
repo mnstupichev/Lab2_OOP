@@ -1,11 +1,9 @@
-using InventorySystem.Interfaces;
-
-namespace InventorySystem.Items;
+namespace InventorySystem.Items.BaseItem;
 
 public abstract class BaseItem : IItem
 {
     public string Name { get; }
-    public int Quantity { get; set; }
+    public int Quantity { get; protected set; }
 
     protected BaseItem(string name, int quantity)
     {

@@ -1,6 +1,4 @@
-using InventorySystem.Items;
-
-namespace InventorySystem.Builders;
+namespace InventorySystem.Items.Food;
 
 public class FoodBuilder : IFoodBuilder
 {

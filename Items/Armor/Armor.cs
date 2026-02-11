@@ -1,13 +1,13 @@
-using InventorySystem.Interfaces;
+using InventorySystem.Services.EquipmentServise;
 
-namespace InventorySystem.Items;
+namespace InventorySystem.Items.Armor;
 
-public class Armor : BaseItem, IEquippable
+public class Armor : BaseItem.BaseItem, IEquippable
 {
     public int BaseDefense { get; private set; }
     public int Durability { get; private set; }
     public EquipmentSlot Slot => EquipmentSlot.Armor;
-    public bool IsEquipped { get; set; }
+    public bool IsEquipped { get; private set; }
 
     public Armor(
         string name,

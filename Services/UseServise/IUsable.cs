@@ -1,7 +1,6 @@
-namespace InventorySystem.Interfaces;
+namespace InventorySystem.Services.UseServise;
 
 public interface IUsable
 {
-    bool CanUse { get; }
     UseResult Use();
 }

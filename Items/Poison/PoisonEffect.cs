@@ -1,3 +1,5 @@
+namespace InventorySystem.Items.Poison;
+
 public enum PotionEffect
 {
     Health,

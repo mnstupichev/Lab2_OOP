@@ -1,110 +1,48 @@
+using InventorySystem.InventoryFolder;
+using InventorySystem.InventoryFolder.InventoryStates;
+using InventorySystem.InventoryFolder.Results;
+using InventorySystem.Items.Weapon;
 using Xunit;
-using InventorySystem.Services;
-using InventorySystem.Builders;
-using InventorySystem.States;
 
 namespace InventorySystem.Tests;
 
 public class OverloadedInventoryStateTests
 {
     [Fact]
-    public void OverloadedState_CanAddItem_AlwaysReturnsFalse()
+    public void Inventory_TryAddItem_WithFullInventory()
     {
-        var state = new OverloadedInventoryState();
-        var weapon = new WeaponBuilder()
+        var inventory = new Inventory(100);
+        var weapon1 = new WeaponBuilder()
+            .WithQuantity(100)
+            .Build();
+        
+        inventory.TryAddItem(weapon1);
+        
+        var weapon2 = new WeaponBuilder()
             .WithQuantity(10)
             .Build();
+        
+        AddItemResult result = inventory.TryAddItem(weapon2);
 
-        var result = state.CanAddItem(weapon, 50, 100);
-
-        Assert.False(result);
+        Assert.Equal(100, inventory.CurrentQuantity);
+        Assert.IsType<OverloadedInventoryState>(inventory.State);
+        Assert.IsType<AddItemResult.AlreadyFull>(result);
     }
-
+    
     [Fact]
-    public void OverloadedState_CanRemoveItem_ReturnsTrue()
+    public void Inventory_TryRemoveItem_WithFullInventory()
     {
-        var state = new OverloadedInventoryState();
-
-        var result = state.CanRemoveItem();
-
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void OverloadedState_Transition_ToNormalWhenUnderCapacity()
-    {
-        var state = new OverloadedInventoryState();
-
-        var newState = state.Transition(50, 100);
-
-        Assert.NotNull(newState);
-        Assert.IsType<NormalInventoryState>(newState);
-    }
-
-    [Fact]
-    public void OverloadedState_Transition_StaysOverloadedWhenOverCapacity()
-    {
-        var state = new OverloadedInventoryState();
-
-        var newState = state.Transition(120, 100);
-
-        Assert.Null(newState);
-    }
-
-    [Fact]
-    public void NormalState_Transition_ToOverloadedWhenExceedsCapacity()
-    {
-        var state = new NormalInventoryState();
-
-        var newState = state.Transition(110, 100);
-
-        Assert.NotNull(newState);
-        Assert.IsType<OverloadedInventoryState>(newState);
-    }
-
-    [Fact]
-    public void NormalState_Transition_StaysNormalWhenUnderCapacity()
-    {
-        var state = new NormalInventoryState();
-
-        var newState = state.Transition(50, 100);
-
-        Assert.Null(newState);
-    }
-
-    [Fact]
-    public void NormalState_CanAddItem_TrueWhenWithinCapacity()
-    {
-        var state = new NormalInventoryState();
+        var inventory = new Inventory(100);
         var weapon = new WeaponBuilder()
-            .WithQuantity(30)
+            .WithQuantity(100)
             .Build();
+        
+        inventory.AddItem(weapon);
+        
+        RemoveResult result = inventory.TryRemoveItem(weapon);
 
-        var result = state.CanAddItem(weapon, 50, 100);
-
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void NormalState_CanAddItem_FalseWhenExceedsCapacity()
-    {
-        var state = new NormalInventoryState();
-        var weapon = new WeaponBuilder()
-            .WithQuantity(60)
-            .Build();
-
-        var result = state.CanAddItem(weapon, 50, 100);
-
-        Assert.False(result);
-    }
-
-    [Fact]
-    public void NormalState_CanRemoveItem_ReturnsTrue()
-    {
-        var state = new NormalInventoryState();
-
-        var result = state.CanRemoveItem();
-
-        Assert.True(result);
+        Assert.Equal(0, inventory.CurrentQuantity);
+        Assert.IsType<NormalInventoryState>(inventory.State);
+        Assert.IsType<RemoveResult.Success>(result);
     }
 }
